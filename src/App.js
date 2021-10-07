@@ -4,6 +4,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./styles.css";
 import React, { useState } from "react";
 
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+
+import DateTimePicker from '@mui/lab/DateTimePicker';
+
+import TextField from '@mui/material/TextField';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+
 const minuteSeconds = 60;
 const hourSeconds = 3600;
 const daySeconds = 86400;
@@ -31,11 +38,17 @@ const getTimeHours = (time) => ((time % daySeconds) / hourSeconds) | 0;
 const getTimeDays = (time) => (time / daySeconds) | 0;
 
 export default function App() {
+  const [value, setValue] = React.useState(new Date());
   const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
-  const [endTime, setEndTime] = useState(new Date());
-  const remainingTime = endTime / 1000 - stratTime;
-  const days = Math.ceil(remainingTime / daySeconds);
+  //const [endTime, setEndTime] = useState(new Date());
+  const remainingTime = value / 1000 - stratTime;
+  const days = Math.floor(remainingTime / daySeconds);
   const daysDuration = days * daySeconds;
+
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <div className="App">
@@ -75,7 +88,15 @@ export default function App() {
           renderTime("minutes", getTimeMinutes(hourSeconds - elapsedTime))
         }
       </CountdownCircleTimer>
-      <DatePicker selected={endTime} onChange={(date) => setEndTime(date)} />
+      <div className={"Local"}>
+      <LocalizationProvider dateAdapter={AdapterDateFns} >
+      <DateTimePicker
+          value={value}
+          onChange={handleChange}
+          renderInput={(params) => <TextField {...params} />}
+        />
+        </LocalizationProvider>
+        </div>
     </div>
   );
 }
