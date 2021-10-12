@@ -42,13 +42,15 @@ export default function App() {
   const [value, setValue] = React.useState(new Date());
   const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
   //const [endTime, setEndTime] = useState(new Date());
-  const remainingTime = value / 1000 - stratTime;
-  const days = Math.floor(remainingTime / daySeconds);
-  const daysDuration = days * daySeconds;
+  var remainingTime = value / 1000 - stratTime;
+  var days = Math.floor(remainingTime / daySeconds);
+  var daysDuration = days * daySeconds;
+  const [curKey, setCurKey] = React.useState(value)
 
 
   const handleChange = (newValue) => {
     setValue(newValue);
+    setCurKey(newValue);
   };
 
   return (
@@ -64,6 +66,7 @@ export default function App() {
       <div className="circles">
         <CountdownCircleTimer
           {...timerProps}
+          key = {curKey}
           colors={[["#7E2E84"]]}
           duration={daysDuration}
           initialRemainingTime={remainingTime}
@@ -74,6 +77,7 @@ export default function App() {
         </CountdownCircleTimer>
         <CountdownCircleTimer
           {...timerProps}
+          key = {curKey+1}
           colors={[["#D14081"]]}
           duration={daySeconds}
           initialRemainingTime={remainingTime % daySeconds}
@@ -87,6 +91,7 @@ export default function App() {
         </CountdownCircleTimer>
         <CountdownCircleTimer
           {...timerProps}
+          key = {curKey+2}
           colors={[["#EF798A"]]}
           duration={hourSeconds}
           initialRemainingTime={remainingTime % hourSeconds}
