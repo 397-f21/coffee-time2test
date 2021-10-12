@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles.css";
 import React, { useState } from "react";
+import Typography from '@mui/material/Typography';
 
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
@@ -54,54 +55,64 @@ export default function App() {
 
   return (
     <div className="App">
-      <CountdownCircleTimer
-        {...timerProps}
-        key = {curKey}
-        colors={[["#7E2E84"]]}
-        duration={daysDuration}
-        initialRemainingTime={remainingTime}
-      >
-        {({ elapsedTime }) =>
-          renderTime("days", getTimeDays(daysDuration - elapsedTime))
-        }
-      </CountdownCircleTimer>
-      <CountdownCircleTimer
-        {...timerProps}
-        key = {curKey + 1}
-        colors={[["#D14081"]]}
-        duration={daySeconds}
-        initialRemainingTime={remainingTime % daySeconds}
-        onComplete={(totalElapsedTime) => [
-          remainingTime - totalElapsedTime > hourSeconds,
-        ]}
-      >
-        {({ elapsedTime }) =>
-          renderTime("hours", getTimeHours(daySeconds - elapsedTime))
-        }
-      </CountdownCircleTimer>
-      <CountdownCircleTimer
-        {...timerProps}
-        key = {curKey + 2}
-        colors={[["#EF798A"]]}
-        duration={hourSeconds}
-        initialRemainingTime={remainingTime % hourSeconds}
-        onComplete={(totalElapsedTime) => [
-          remainingTime - totalElapsedTime > minuteSeconds,
-        ]}
-      >
-        {({ elapsedTime }) =>
-          renderTime("minutes", getTimeMinutes(hourSeconds - elapsedTime))
-        }
-      </CountdownCircleTimer>
+      <div className="titles">
+        <Typography variant="h6" gutterBottom component="div">
+          time until
+        </Typography>
+        <Typography variant="h2" gutterBottom component="div">
+          MCAT
+        </Typography>
+      </div>
+      <div className="circles">
+        <CountdownCircleTimer
+          {...timerProps}
+          key = {curKey}
+          colors={[["#7E2E84"]]}
+          duration={daysDuration}
+          initialRemainingTime={remainingTime}
+        >
+          {({ elapsedTime }) =>
+            renderTime("days", getTimeDays(daysDuration - elapsedTime))
+          }
+        </CountdownCircleTimer>
+        <CountdownCircleTimer
+          {...timerProps}
+          key = {curKey+1}
+          colors={[["#D14081"]]}
+          duration={daySeconds}
+          initialRemainingTime={remainingTime % daySeconds}
+          onComplete={(totalElapsedTime) => [
+            remainingTime - totalElapsedTime > hourSeconds,
+          ]}
+        >
+          {({ elapsedTime }) =>
+            renderTime("hours", getTimeHours(daySeconds - elapsedTime))
+          }
+        </CountdownCircleTimer>
+        <CountdownCircleTimer
+          {...timerProps}
+          key = {curKey+2}
+          colors={[["#EF798A"]]}
+          duration={hourSeconds}
+          initialRemainingTime={remainingTime % hourSeconds}
+          onComplete={(totalElapsedTime) => [
+            remainingTime - totalElapsedTime > minuteSeconds,
+          ]}
+        >
+          {({ elapsedTime }) =>
+            renderTime("minutes", getTimeMinutes(hourSeconds - elapsedTime))
+          }
+        </CountdownCircleTimer>
+      </div>
       <div className={"Local"}>
-      <LocalizationProvider dateAdapter={AdapterDateFns} >
-      <DateTimePicker
-          value={value}
-          onChange={handleChange}
-          renderInput={(params) => <TextField {...params} />}
-        />
+        <LocalizationProvider dateAdapter={AdapterDateFns} >
+          <DateTimePicker
+              value={value}
+              onChange={handleChange}
+              renderInput={(params) => <TextField {...params} />}
+          />
         </LocalizationProvider>
-        </div>
+      </div>
     </div>
   );
 }

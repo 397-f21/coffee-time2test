@@ -6,7 +6,23 @@
   align-content: center;
   font-family: sans-serif;
   text-align: center;
-  padding: 30px;
+  padding-top: 30px;
+  margin: auto;
+  flex-direction: column;
+}
+
+.circles {
+  padding-top: 0px;
+}
+
+.circles > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 5px;
   margin: auto;
   flex-direction: column;
 }
