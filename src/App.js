@@ -1,5 +1,4 @@
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles.css";
 import React, { useState } from "react";
@@ -31,26 +30,24 @@ const renderTime = (dimension, time) => {
   );
 };
 
-//const [date, setDate] = useState("");
 
-const getTimeSeconds = (time) => (minuteSeconds - time) | 0;
 const getTimeMinutes = (time) => ((time % hourSeconds) / minuteSeconds) | 0;
 const getTimeHours = (time) => ((time % daySeconds) / hourSeconds) | 0;
 const getTimeDays = (time) => (time / daySeconds) | 0;
 
 export default function App() {
-  const [value, setValue] = React.useState(new Date());
+  const [endTime, setEndTime] = useState(new Date());
   const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
   //const [endTime, setEndTime] = useState(new Date());
-  var remainingTime = value / 1000 - stratTime;
+  var remainingTime = endTime / 1000 - stratTime;
   var days = Math.floor(remainingTime / daySeconds);
   var daysDuration = days * daySeconds;
-  const [curKey, setCurKey] = React.useState(value)
+  const [curKey, setCurKey] = React.useState(endTime)
 
 
-  const handleChange = (newValue) => {
-    setValue(newValue);
-    setCurKey(newValue);
+  const handleChange = (newEndTime) => {
+    setEndTime(newEndTime);
+    setCurKey(newEndTime);
   };
 
   return (
@@ -107,7 +104,7 @@ export default function App() {
       <div className={"Local"}>
         <LocalizationProvider dateAdapter={AdapterDateFns} >
           <DateTimePicker
-              value={value}
+              value={endTime}
               onChange={handleChange}
               renderInput={(params) => <TextField {...params} />}
           />
