@@ -1,4 +1,28 @@
-.App > * {
+.App {
+  padding: 30px;
+}
+
+.examList > * {
+  margin-top: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#appBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  /* align-items: center; */
+  background: '#e0e0e0';
+  color:'black';
+
+}
+.container > * {
 
   display: flex;
   justify-content: center;
@@ -11,34 +35,9 @@
   flex-direction: column;
 }
 
-.circles {
-  padding-top: 0px;
-}
 
-.circles > * {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  font-family: sans-serif;
-  text-align: center;
-  padding: 5px;
-  margin: auto;
-  flex-direction: column;
-}
-
-.Local > * {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    font-family: sans-serif;
-    text-align: center;
-    padding: 0px;
-    margin: auto;
-    flex-direction: column;
-}
 
 .time {
   font-size: 32px;
 }
+
