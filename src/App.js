@@ -3,22 +3,33 @@ import React, { useState } from "react";
 import ExamCard from "./components/ExamCard";
 import Typography from '@mui/material/Typography';
 
-const newExam = () => {
+const newExams = () => {
   return {
-    'name' : 'MCAT',
-    'time' : new Date()
+    'SAT':
+      {
+        'name' : 'SAT',
+        'time' : new Date()
+      },
+    'ACT':
+      {
+        'name' : 'ACT',
+        'time' : new Date()
+      }
   }
 }
 
 export default function App() {
-  const [exam, setExam] = useState(newExam());
+  const [exams, setExams] = useState(newExams());
 
   return (
     <div className="App">
       <Typography variant="h2" gutterBottom component="div">
         all exams
       </Typography>
-      <ExamCard exam={ exam } setExam = {setExam} />
+      <div className="examList">
+        { Object.values(exams).map(exam => <ExamCard key={exam.name} exam={ exam } setExams = {setExams} />) }
+      </div>
+      {/* <ExamCard exam={ exam } setExams = {setExams} /> */}
     </div>
   );
 }

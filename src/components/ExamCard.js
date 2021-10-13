@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -9,7 +8,7 @@ import ExamDialog from './ExamDialog';
 
 
 
-export default function ExamCard({exam, setExam}) {
+export default function ExamCard({exam, setExams}) {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -26,6 +25,9 @@ export default function ExamCard({exam, setExam}) {
                 <Typography variant="h5" component="div">
                 {exam.name}
                 </Typography>
+                <Typography variant="h7" component="div">
+                {"" + exam.time}
+                </Typography>
             </CardContent>
             <CardActions>
                 <Button variant="outlined" onClick={handleClickOpen}>
@@ -34,7 +36,7 @@ export default function ExamCard({exam, setExam}) {
             </CardActions>
         </Card>
         
-        <ExamDialog handleClose={handleClose} open={ open } setOpen={setOpen} exam = { exam } setExam={ setExam }/>
+        <ExamDialog handleClose={handleClose} open={ open } setOpen={setOpen} exam = { exam } setExams={ setExams }/>
     </div>
   );
 }

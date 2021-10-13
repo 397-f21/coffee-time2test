@@ -30,7 +30,7 @@ const getTimeMinutes = (time) => ((time % hourSeconds) / minuteSeconds) | 0;
 const getTimeHours = (time) => ((time % daySeconds) / hourSeconds) | 0;
 const getTimeDays = (time) => (time / daySeconds) | 0;
 
-export default function ExamTimer({ exam, setExam }) {
+export default function ExamTimer({ exam, setExams }) {
   const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
   var remainingTime = exam.time / 1000 - stratTime;
   var days = Math.floor(remainingTime / daySeconds);
@@ -38,7 +38,11 @@ export default function ExamTimer({ exam, setExam }) {
   const [curKey, setCurKey] = React.useState(exam.time);
 
   const handleChange = (newEndTime) => {
-    setExam({'name': exam.name, 'time': newEndTime});
+    setExams(prevState => ({
+      ...prevState,
+      [exam.name]: {'name': exam.name, 'time': newEndTime}
+    }));
+    // setExams({'name': exam.name, 'time': newEndTime});
     setCurKey(newEndTime);
   };
 
