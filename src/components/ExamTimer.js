@@ -1,11 +1,11 @@
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-// import React, { useState } from "react";
 import React from "react";
 import Typography from "@mui/material/Typography";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DateTimePicker from "@mui/lab/DateTimePicker";
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import "../styles.css";
 
 const minuteSeconds = 60;
 const hourSeconds = 3600;
@@ -31,7 +31,6 @@ const getTimeHours = (time) => ((time % daySeconds) / hourSeconds) | 0;
 const getTimeDays = (time) => (time / daySeconds) | 0;
 
 export default function ExamTimer({ exam, setExam }) {
-  // const [endTime, setEndTime] = useState(new Date());
   const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
   var remainingTime = exam.time / 1000 - stratTime;
   var days = Math.floor(remainingTime / daySeconds);

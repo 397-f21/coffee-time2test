@@ -1,7 +1,7 @@
 import "./styles.css";
 import React, { useState } from "react";
-import ExamTimer from "./components/ExamTimer";
 import ExamCard from "./components/ExamCard";
+import Typography from '@mui/material/Typography';
 
 const newExam = () => {
   return {
@@ -15,7 +15,9 @@ export default function App() {
 
   return (
     <div className="App">
-      {/* <ExamTimer exam={ exam } setExam = { setExam }/> */}
+      <Typography variant="h2" gutterBottom component="div">
+        all exams
+      </Typography>
       <ExamCard exam={ exam } setExam = {setExam} />
     </div>
   );

@@ -20,18 +20,18 @@ export default function ExamCard({exam, setExam}) {
         setOpen(false);
     };
   return (
-    <div className="Container">
-        <Card sx={{ minWidth: 275 }}>
-        <CardContent>
-            <Typography variant="h5" component="div">
-            {exam.name}
-            </Typography>
-        </CardContent>
-        <CardActions>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Open full-screen dialog
-            </Button>
-        </CardActions>
+    <div >
+        <Card className="card" sx={{ minWidth: 275 }}>
+            <CardContent>
+                <Typography variant="h5" component="div">
+                {exam.name}
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <Button variant="outlined" onClick={handleClickOpen}>
+                    See More
+                </Button>
+            </CardActions>
         </Card>
         
         <ExamDialog handleClose={handleClose} open={ open } setOpen={setOpen} exam = { exam } setExam={ setExam }/>
