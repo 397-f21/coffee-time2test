@@ -11,6 +11,8 @@ import DateTimePicker from '@mui/lab/DateTimePicker';
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 
+import NewExamModal from "./NewExamModal";
+
 const minuteSeconds = 60;
 const hourSeconds = 3600;
 const daySeconds = 86400;
@@ -45,42 +47,18 @@ export default function App() {
   var daysDuration = days * daySeconds;
   const [curKey, setCurKey] = React.useState(endTime)
 
-  const handleDateChange = (newEndTime) => {
-    setEndTime(newEndTime);
-    setCurKey(newEndTime);
-  };
-
   const [examList, setExamList] = useState([])
   const [AddingExamName, setAddExamName] = useState('')
 
   let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
     setIsOpen(true);
   }
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
-
   function closeModal() {
     setIsOpen(false);
-  }
-
-  function addExam() {
-    setIsOpen(false);
-    console.log("original: " + examList)
-    let newExamList = [...examList,{'name': AddingExamName, 'date': endTime}]
-    setExamList(newExamList);
-    console.log("new: " + newExamList)
-    console.log("examList " + examList)
-    setAddExamName('')
-  }
-
-  const handleChangeExamName = (x) => {
-    setAddExamName(x.currentTarget.value)
   }
 
 
@@ -96,29 +74,12 @@ export default function App() {
       </div>
       <button onClick={openModal}>Open Modal</button>
       
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
+      <NewExamModal
+        modalIsOpen={modalIsOpen}
         onRequestClose={closeModal}
-        ariaHideApp={false}
-        contentLabel="Example Modal"
-      >        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Enter Exam Information</h2>
-      <div>Exam Name:</div>
-      <form>
-        <input type="text" value={AddingExamName} onChange={(x) => handleChangeExamName(x)} />
-      </form>
-      <div className={"Local"}>
-        <LocalizationProvider dateAdapter={AdapterDateFns} >
-          <DateTimePicker
-              value={endTime}
-              onChange={handleDateChange}
-              renderInput={(params) => <TextField {...params} />}
-          />
-        </LocalizationProvider>
-      </div>
-      <button onClick={closeModal}>close</button>
-      <button onClick={addExam}>Add</button>
-    </Modal>
+        setIsOpen={setIsOpen}
+        testString={"hello"}
+      />
       <div className="circles">
         <CountdownCircleTimer
           {...timerProps}

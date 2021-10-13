@@ -10,6 +10,7 @@ import DateTimePicker from '@mui/lab/DateTimePicker';
 
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import { getTableSortLabelUtilityClass } from "@mui/material";
 
 const customStyles = {
     content: {
@@ -22,7 +23,7 @@ const customStyles = {
     },
   };
 
-const NewExamModal = (openModal, closeModal, modalIsOpen, setIsOpen) => {
+const NewExamModal = (closeModal, modalIsOpen, setIsOpen, testString) => {
     const [endTime, setEndTime] = useState(new Date());
   
     const handleDateChange = (newEndTime) => {
@@ -52,10 +53,11 @@ const NewExamModal = (openModal, closeModal, modalIsOpen, setIsOpen) => {
     const handleChangeExamName = (x) => {
       setAddExamName(x.currentTarget.value)
     }
-
+    console.log(JSON.stringify(modalIsOpen))
+    console.log(testString)
     return (
         <Modal
-        isOpen={modalIsOpen}
+        isOpen={true}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         ariaHideApp={false}
