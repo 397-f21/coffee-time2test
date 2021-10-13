@@ -1,11 +1,9 @@
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React from "react";
 import Typography from "@mui/material/Typography";
-
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-
 import DateTimePicker from "@mui/lab/DateTimePicker";
-
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 
@@ -32,16 +30,16 @@ const getTimeMinutes = (time) => ((time % hourSeconds) / minuteSeconds) | 0;
 const getTimeHours = (time) => ((time % daySeconds) / hourSeconds) | 0;
 const getTimeDays = (time) => (time / daySeconds) | 0;
 
-export default function ExamTimer() {
-  const [endTime, setEndTime] = useState(new Date());
+export default function ExamTimer({ exam, setExam }) {
+  // const [endTime, setEndTime] = useState(new Date());
   const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
-  var remainingTime = endTime / 1000 - stratTime;
+  var remainingTime = exam.time / 1000 - stratTime;
   var days = Math.floor(remainingTime / daySeconds);
   var daysDuration = days * daySeconds;
-  const [curKey, setCurKey] = React.useState(endTime);
+  const [curKey, setCurKey] = React.useState(exam.time);
 
   const handleChange = (newEndTime) => {
-    setEndTime(newEndTime);
+    setExam({'name': exam.name, 'time': newEndTime});
     setCurKey(newEndTime);
   };
 
@@ -99,7 +97,7 @@ export default function ExamTimer() {
       <div className={"Local"}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DateTimePicker
-            value={endTime}
+            value={exam.time}
             onChange={handleChange}
             renderInput={(params) => <TextField {...params} />}
           />
