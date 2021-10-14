@@ -10,7 +10,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function ExamDialog({ handleClose, open, setOpen, exam, setExams}) {
+export default function ExamDialog({ handleClose, open, exam, setExams}) {
 
   return (
     <div className="dialog">

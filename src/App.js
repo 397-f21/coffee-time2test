@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ExamCard from "./components/ExamCard";
 import Typography from '@mui/material/Typography';
 import NewExamModal from "./components/NewExamModal";
+import Button from '@mui/material/Button';
 
 const newExams = () => {
   return {
@@ -21,16 +22,15 @@ const newExams = () => {
 
 export default function App() {
   const [exams, setExams] = useState(newExams());
-   
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [addOpen, setAddOpen] = React.useState(false);
 
-  const togglePopup=()=> {
-      setIsOpen(!modalIsOpen);
-    }
+  const handleAddOpen = () => {
+      setAddOpen(true);
+  };
 
-  {!modalIsOpen && <NewExamModal
-      handleTogglePopup={togglePopup}
-   />}
+  const handleAddClose = () => {
+      setAddOpen(false);
+  };
 
   return (
     <div className="App">
@@ -40,7 +40,10 @@ export default function App() {
       <div className="examList">
         { Object.values(exams).map(exam => <ExamCard key={exam.name} exam={ exam } setExams = {setExams} />) }
       </div>
-      {/* <ExamCard exam={ exam } setExams = {setExams} /> */}
+      <Button variant="outlined" onClick={handleAddOpen}>
+          New Exam
+      </Button>
+      <NewExamModal handleClose={handleAddClose} open={ addOpen } setExams={ setExams }/>
     </div>
   );
 }
