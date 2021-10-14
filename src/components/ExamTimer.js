@@ -42,7 +42,6 @@ export default function ExamTimer({ exam, setExams }) {
       ...prevState,
       [exam.name]: {'name': exam.name, 'time': newEndTime}
     }));
-    // setExams({'name': exam.name, 'time': newEndTime});
     setCurKey(newEndTime);
   };
 
@@ -53,7 +52,7 @@ export default function ExamTimer({ exam, setExams }) {
           time until
         </Typography>
         <Typography variant="h2" gutterBottom component="div">
-          MCAT
+          {exam.name}
         </Typography>
       </div>
       <div className="circles">

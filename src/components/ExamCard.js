@@ -18,6 +18,9 @@ export default function ExamCard({exam, setExams}) {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const displayDate = exam.time.toLocaleString().replace(',', ' at');
+
   return (
     <div >
         <Card className="card" sx={{ minWidth: 275 }}>
@@ -26,7 +29,7 @@ export default function ExamCard({exam, setExams}) {
                 {exam.name}
                 </Typography>
                 <Typography variant="h7" component="div">
-                {"" + exam.time}
+                {displayDate.slice(0, -6) + displayDate.slice(-3)}
                 </Typography>
             </CardContent>
             <CardActions>

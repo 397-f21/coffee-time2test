@@ -7,16 +7,16 @@ import Button from '@mui/material/Button';
 
 const newExams = () => {
   return {
-    'SAT':
-      {
-        'name' : 'SAT',
-        'time' : new Date()
-      },
-    'ACT':
-      {
-        'name' : 'ACT',
-        'time' : new Date()
-      }
+    // 'CHEM 150':
+    //   {
+    //     'name' : 'CHEM 150',
+    //     'time' : new Date()
+    //   },
+    // 'MATH 234':
+    //   {
+    //     'name' : 'MATH 234',
+    //     'time' : new Date()
+    //   }
   }
 }
 

@@ -3,7 +3,8 @@
 }
 
 .examList > * {
-  margin-top: 20px;
+  margin: 15px;
+  margin-left: 0px;
 }
 
 .card {
