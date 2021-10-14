@@ -1,5 +1,6 @@
 .App {
-  padding: 30px;
+  padding: 50px;
+  padding-top: 65px;
 }
 
 .examList > * {
@@ -18,10 +19,10 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  /* align-items: center; */
+  align-items: flex-end;
   background: '#e0e0e0';
   color:'black';
-
+  height: 100px;
 }
 .container > * {
 

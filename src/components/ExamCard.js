@@ -19,7 +19,9 @@ export default function ExamCard({exam, setExams}) {
         setOpen(false);
     };
 
-    const displayDate = exam.time.toLocaleString().replace(',', ' at');
+    const displayDate = exam.time.toDateString();
+    const timeString = exam.time.toLocaleTimeString()
+    const displayTime = "at " + timeString.slice(0, -6) + timeString.slice(-3);
 
   return (
     <div >
@@ -29,12 +31,15 @@ export default function ExamCard({exam, setExams}) {
                 {exam.name}
                 </Typography>
                 <Typography variant="h7" component="div">
-                {displayDate.slice(0, -6) + displayDate.slice(-3)}
+                {displayDate}
+                </Typography>
+                <Typography variant="h7" component="div">
+                {displayTime}
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button variant="outlined" onClick={handleClickOpen}>
-                    See More
+                <Button variant="contained" onClick={handleClickOpen}>
+                    count down
                 </Button>
             </CardActions>
         </Card>
