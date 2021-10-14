@@ -2,6 +2,7 @@ import "./styles.css";
 import React, { useState } from "react";
 import ExamCard from "./components/ExamCard";
 import Typography from '@mui/material/Typography';
+import NewExamModal from "./components/NewExamModal";
 
 const newExams = () => {
   return {
@@ -20,6 +21,16 @@ const newExams = () => {
 
 export default function App() {
   const [exams, setExams] = useState(newExams());
+   
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const togglePopup=()=> {
+      setIsOpen(!modalIsOpen);
+    }
+
+  {!modalIsOpen && <NewExamModal
+      handleTogglePopup={togglePopup}
+   />}
 
   return (
     <div className="App">
