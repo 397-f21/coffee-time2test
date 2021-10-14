@@ -32,8 +32,6 @@ const renderTime = (dimension, time) => {
   );
 };
 
-
-
 const getTimeMinutes = (time) => ((time % hourSeconds) / minuteSeconds) | 0;
 const getTimeHours = (time) => ((time % daySeconds) / hourSeconds) | 0;
 const getTimeDays = (time) => (time / daySeconds) | 0;
@@ -46,40 +44,32 @@ export default function App() {
   var days = Math.floor(remainingTime / daySeconds);
   var daysDuration = days * daySeconds;
   const [curKey, setCurKey] = React.useState(endTime)
-
-  const [examList, setExamList] = useState([])
-  const [AddingExamName, setAddExamName] = useState('')
-
-  let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
+    const togglePopup=()=> {
+      setIsOpen(!modalIsOpen);
+    }
+   
 
   return (
+    < div>
     <div className="App">
-      <div className="titles">
+       <div className="titles">
         <Typography variant="h6" gutterBottom component="div">
           time until
         </Typography>
         <Typography variant="h2" gutterBottom component="div">
           MCAT
         </Typography>
+        </div>
+        <button onClick={togglePopup}>Open Modal</button>
       </div>
-      <button onClick={openModal}>Open Modal</button>
-      
-      <NewExamModal
-        modalIsOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        setIsOpen={setIsOpen}
-        testString={"hello"}
-      />
+
+
+      {!modalIsOpen && <NewExamModal
+         handleTogglePopup={togglePopup}
+      />}
+
       <div className="circles">
         <CountdownCircleTimer
           {...timerProps}
