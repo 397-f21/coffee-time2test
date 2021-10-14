@@ -15,6 +15,14 @@
   align-items: center;
 }
 
+.newExam {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+}
+
 #appBar {
   display: flex;
   flex-direction: row;

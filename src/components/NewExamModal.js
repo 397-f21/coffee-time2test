@@ -50,22 +50,24 @@ const NewExamModal = (props) => {
       >
         <DialogTitle>Enter New Exam Information</DialogTitle>
         <DialogContent>
-          <TextField
-            autoFocus
-            id="name"
-            // value={newForm.name}
-            onChange={handleNameChange}
-            label="Exam name"
-            type="text"
-            variant="standard"
-          />
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DateTimePicker
-              value={newForm.time}
-              onChange={handleDateChange}
-              renderInput={(params) => <TextField {...params} />}
-            />
-          </LocalizationProvider>
+          <div className="newExam">
+            <TextField
+              autoFocus
+              id="name"
+              // value={newForm.name}
+              onChange={handleNameChange}
+              label="Exam name"
+              type="text"
+              variant="standard"
+              />
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DateTimePicker
+                value={newForm.time}
+                onChange={handleDateChange}
+                renderInput={(params) => <TextField {...params} />}
+                />
+            </LocalizationProvider>
+          </div>
         </DialogContent>
         <DialogActions>
           <Button onClick={props.handleClose}>Cancel</Button>
