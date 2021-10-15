@@ -1,11 +1,25 @@
 .App {
-  padding: 50px;
-  padding-top: 65px;
+  margin: 50px;
+  margin-top: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
 }
 
-.examList > * {
-  margin: 15px;
-  margin-left: 0px;
+@media screen and (max-width: 500px) {
+  #title {
+    font-size: 45px;
+  }
+}
+
+#eventList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
 }
 
 .card {
@@ -15,14 +29,26 @@
   align-items: center;
 }
 
-.newExam {
+.addEditModal {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 20px;
   align-items: flex-start;
+  gap: 20px;
 }
 
+#circles {
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.circlesWrapper {
+  font-size: 10px;
+}
 #appBar {
   display: flex;
   flex-direction: row;
@@ -32,8 +58,8 @@
   color:'black';
   height: 100px;
 }
-.container > * {
 
+.container > * {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,9 +71,11 @@
   flex-direction: column;
 }
 
-
-
 .time {
-  font-size: 32px;
+  font-size: 18px;
+}
+
+.dimension {
+  font-size: 10px;
 }
 

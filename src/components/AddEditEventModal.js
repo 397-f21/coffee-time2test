@@ -14,7 +14,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
-const NewExamModal = (props) => {
+export default function AddEditEventModal(props) {
 
   const [newForm, setNewForm] = useState({'name': '', 'time': new Date()});
   
@@ -50,7 +50,7 @@ const NewExamModal = (props) => {
       >
         <DialogTitle>Enter New Exam Information</DialogTitle>
         <DialogContent>
-          <div className="newExam">
+          <div className="addEditModal">
             <TextField
               autoFocus
               id="name"
@@ -109,5 +109,3 @@ const NewExamModal = (props) => {
     </div>
   );
 };
-
-export default NewExamModal;

@@ -1,12 +1,14 @@
 import "./styles.css";
 import React, { useState } from "react";
-import ExamCard from "./components/ExamCard";
+import EventCard from "./components/EventCard";
 import Typography from '@mui/material/Typography';
-import NewExamModal from "./components/NewExamModal";
+import AddEditEventModal from "./components/AddEditEventModal";
 import Button from '@mui/material/Button';
 
 const newExams = () => {
   return {
+    // Example data
+    // 
     // 'CHEM 150':
     //   {
     //     'name' : 'CHEM 150',
@@ -34,16 +36,18 @@ export default function App() {
 
   return (
     <div className="App">
-      <Typography variant="h2" gutterBottom component="div">
-        all exams
+      <Typography id="title" variant="h2" component="div">
+        all upcoming events
       </Typography>
-      <div className="examList">
-        { Object.values(exams).map(exam => <ExamCard key={exam.name} exam={ exam } setExams = {setExams} />) }
-      </div>
       <Button variant="outlined" onClick={handleAddOpen}>
-          New Exam
+          Add new event
       </Button>
-      <NewExamModal handleClose={handleAddClose} open={ addOpen } setExams={ setExams }/>
+      <div id="eventList">
+        { Object.keys(exams).length === 0 ? 
+            <Typography id="empty-message" variant="h7" component="i">No events scheduled yet.</Typography> : 
+            Object.values(exams).map(exam => <EventCard key={exam.name} exam={ exam } setExams = {setExams} />) }
+      </div>
+      <AddEditEventModal handleClose={handleAddClose} open={ addOpen } setExams={ setExams }/>
     </div>
   );
 }
