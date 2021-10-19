@@ -6,27 +6,14 @@ import AddEditEventModal from "./components/AddEditEventModal";
 import Button from "@mui/material/Button";
 
 const newExams = () => {
-  return {
-    // Example data
-    //
-    // 'CHEM 150':
-    //   {
-    //     'name' : 'CHEM 150',
-    //     'time' : new Date()
-    //   },
-    // 'MATH 234':
-    //   {
-    //     'name' : 'MATH 234',
-    //     'time' : new Date()
-    //   }
-  };
+  return {};
 };
 
 export default function App() {
   const [exams, setExams] = useState(newExams());
   const [addOpen, setAddOpen] = React.useState(false);
 
-  const handleAddOpen = () => {
+  const handleAddOpen = (event) => {
     setAddOpen(true);
   };
 
@@ -53,7 +40,6 @@ export default function App() {
               key={exam.name}
               exam={exam}
               setExams={setExams}
-              opener={handleAddOpen}
             />
           ))
         )}

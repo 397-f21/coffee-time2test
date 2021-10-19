@@ -34,6 +34,14 @@
   width: 400px;
 }
 
+.cardActions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px;
+}
+
 .addEditModal {
   display: flex;
   flex-direction: column;
@@ -50,7 +58,7 @@
   align-items: center;
   gap: 5px;
   margin: 10px;
-  padding-left:25px;
+  padding-left:20px;
 }
 
 .circlesWrapper {
@@ -102,13 +110,14 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 15px;
     width: 220px;
   }
   .cardActions {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    padding-left: 10px;
+    padding-bottom: 10px;
   }
 }

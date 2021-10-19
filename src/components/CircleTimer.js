@@ -1,6 +1,5 @@
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import React from "react";
-import Typography from "@mui/material/Typography";
 import "../styles.css";
 
 const minuteSeconds = 60;

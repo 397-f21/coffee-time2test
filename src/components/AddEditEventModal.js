@@ -1,8 +1,4 @@
-import "react-datepicker/dist/react-datepicker.css";
-import "../styles.css";
 import React, { useState } from "react";
-
-// import Modal from "react-modal";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import Dialog from "@mui/material/Dialog";
 import Button from "@mui/material/Button";
@@ -12,6 +8,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import "../styles.css";
 
 export default function AddEditEventModal(props) {
   const [newForm, setNewForm] = useState(
@@ -19,6 +16,7 @@ export default function AddEditEventModal(props) {
       ? props.exam
       : { id: Date.now().toString(), name: "", time: new Date() }
   );
+
 
   const handleDateChange = (newTime) => {
     setNewForm((prevState) => ({
@@ -35,12 +33,15 @@ export default function AddEditEventModal(props) {
     }));
   };
 
-  const addExam = () => {
-    // console.log(newForm);
+  const handleSubmit = () => {
     props.setExams((prevState) => ({
       ...prevState,
       [newForm.id]: newForm,
     }));
+    // if it's adding, not editing, reset the form
+    if (!props.exam) {
+      setNewForm({ id: Date.now().toString(), name: "", time: new Date() });
+    }
     props.handleClose();
   };
 
@@ -71,40 +72,9 @@ export default function AddEditEventModal(props) {
         </DialogContent>
         <DialogActions>
           <Button onClick={props.handleClose}>Cancel</Button>
-          <Button onClick={addExam}>Submit</Button>
+          <Button onClick={handleSubmit}>Submit</Button>
         </DialogActions>
       </Dialog>
-      {/* <Modal
-        isOpen={true}
-        onAfterOpen={afterOpenModal}
-        ariaHideApp={false}
-        style={customStyles}
-        onRequestClose={props.handleTogglePopup}
-        contentLabel="Example Modal"
-      >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
-          Enter Exam Information
-        </h2>
-        <div>Exam Name:</div>
-        <form>
-          <input
-            type="text"
-            value={AddingExamName}
-            onChange={(x) => handleChangeExamName(x)}
-          />
-        </form>
-        <div className={"Local"}>
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DateTimePicker
-              value={endTime}
-              onChange={handleDateChange}
-              renderInput={(params) => <TextField {...params} />}
-            />
-          </LocalizationProvider>
-        </div>
-        <button onClick={props.handleTogglePopup}>close</button>
-        <button onClick={addExam}>Add</button>
-      </Modal> */}
     </div>
   );
 }
