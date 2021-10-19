@@ -22,8 +22,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 600px;
-  /* width: 100%; */
+  gap: 20px;
 }
 
 .cardContent {
@@ -31,7 +30,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 400px;
 }
 
 .cardActions {
@@ -51,14 +49,11 @@
 }
 
 #circles {
-  width: 100px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 5px;
-  margin: 10px;
-  padding-left:20px;
 }
 
 .circlesWrapper {
@@ -88,10 +83,12 @@
 
 .time {
   font-size: 18px;
+  text-align: center;
 }
 
 .dimension {
   font-size: 10px;
+  text-align: center;
 }
 
 @media screen and (max-width: 500px) {
@@ -103,21 +100,21 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    width: 250px;
+    gap: 0px;
   }
   .cardContent {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    width: 220px;
+    row-gap: 12px;
   }
   .cardActions {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 10px;
-    padding-bottom: 10px;
+    padding-left: 8px;
+    padding-bottom: 8px;
   }
 }

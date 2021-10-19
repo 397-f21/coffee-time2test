@@ -28,25 +28,26 @@ export default function EventCard({ exam, setExams, opener }) {
 
 
   return (
-    <div>
-      <Card className="card" sx={{ minWidth: 300 }}>
-        <CardContent className="cardContent">
-          <Typography variant="h5" component="div">
+    <Card className="card" sx={{ width: '100%' }}>
+        <CardContent className="cardContent" sx={{ width: '80%' }}>
+            <Typography variant="h5">
             {exam.name}
-          </Typography>
-          <CircleTimer exam={exam}></CircleTimer>
+            </Typography>
+            <CircleTimer exam={exam}></CircleTimer>
         </CardContent>
         <CardActions>
-            <div className="cardActions">
-                <Button 
+            <div className="cardActions" sx={{ width: '100%' }}>
+                <Button
+                    size="small" 
                     variant="outlined" 
                     color="secondary" 
                     onClick={handleEditOpen}>
                     Edit
                 </Button>
                 <Button
+                    size="small"
                     variant="outlined"
-                    color="secondary"
+                    color="error"
                     onClick={deleteExam}
                     >
                     Delete
@@ -59,7 +60,6 @@ export default function EventCard({ exam, setExams, opener }) {
                 exam={exam}
             />
         </CardActions>
-      </Card>
-    </div>
+    </Card>
   );
 }

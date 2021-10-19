@@ -48,7 +48,7 @@ export default function AddEditEventModal(props) {
   return (
     <div>
       <Dialog open={props.open} onClose={props.handleClose}>
-        <DialogTitle>Enter New Event Information</DialogTitle>
+        <DialogTitle>{props.exam ? "update event" : "enter new event details"}</DialogTitle>
         <DialogContent>
           <div className="addEditModal">
             <TextField
@@ -56,7 +56,7 @@ export default function AddEditEventModal(props) {
               id="name"
               value={newForm.name}
               onChange={handleNameChange}
-              label="Event name"
+              label="event name"
               type="text"
               variant="standard"
             />
