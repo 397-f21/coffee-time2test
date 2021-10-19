@@ -65,6 +65,7 @@ export default function AddEditEventModal(props) {
                 value={newForm.time}
                 onChange={handleDateChange}
                 renderInput={(params) => <TextField {...params} />}
+                minDate = {new Date()}
                 />
             </LocalizationProvider>
           </div>
