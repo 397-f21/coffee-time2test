@@ -26,7 +26,7 @@ const getTimeMinutes = (time) => ((time % hourSeconds) / minuteSeconds) | 0;
 const getTimeHours = (time) => ((time % daySeconds) / hourSeconds) | 0;
 const getTimeDays = (time) => (time / daySeconds) | 0;
 
-export default function CircleTimer({ exam, setExams }) {
+export default function CircleTimer({ exam }) {
   const stratTime = Date.now() / 1000; // use UNIX timestamp in seconds
   var remainingTime = exam.time / 1000 - stratTime;
   var days = Math.floor(remainingTime / daySeconds);
@@ -34,7 +34,7 @@ export default function CircleTimer({ exam, setExams }) {
 
   return (
     <div id="circles">
-      <CountdownCircleTimer          
+      <CountdownCircleTimer
         {...timerProps}
         key={exam.time}
         colors={[["#7E2E84"]]}
