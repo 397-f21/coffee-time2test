@@ -8,18 +8,13 @@
   gap: 20px;
 }
 
-@media screen and (max-width: 500px) {
-  #title {
-    font-size: 45px;
-  }
-}
-
 #eventList {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 20px;
+  width: 100%
 }
 
 .card {
@@ -27,7 +22,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 650px;
+  width: 600px;
+  /* width: 100%; */
 }
 
 .cardContent {
@@ -53,6 +49,8 @@
   justify-content: center;
   align-items: center;
   gap: 5px;
+  margin: 10px;
+  padding-left:25px;
 }
 
 .circlesWrapper {
@@ -86,4 +84,31 @@
 
 .dimension {
   font-size: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  #title {
+    font-size: 45px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 250px;
+  }
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    width: 220px;
+  }
+  .cardActions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

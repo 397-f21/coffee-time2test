@@ -24,14 +24,14 @@ export default function EventCard({ exam, setExams, opener }) {
 
   return (
     <div>
-      <Card className="card" sx={{ minWidth: 275 }}>
+      <Card className="card" sx={{ minWidth: 300 }}>
         <CardContent className="cardContent">
           <Typography variant="h5" component="div">
             {exam.name}
           </Typography>
           <CircleTimer exam={exam}></CircleTimer>
         </CardContent>
-        <CardActions>
+        <CardActions className="cardActions">
           <Button variant="outlined" color="secondary" onClick={opener}>
             Edit
           </Button>
