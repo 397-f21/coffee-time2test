@@ -27,6 +27,15 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 650px;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
 }
 
 .addEditModal {
@@ -54,8 +63,8 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-end;
-  background: '#e0e0e0';
-  color:'black';
+  background: "#e0e0e0";
+  color: "black";
   height: 100px;
 }
 
@@ -78,4 +87,3 @@
 .dimension {
   font-size: 10px;
 }
-

@@ -4,74 +4,73 @@ import React, { useState } from "react";
 
 // import Modal from "react-modal";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import Dialog from '@mui/material/Dialog';
-import Button from '@mui/material/Button';
+import Dialog from "@mui/material/Dialog";
+import Button from "@mui/material/Button";
 import DateTimePicker from "@mui/lab/DateTimePicker";
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
 
 export default function AddEditEventModal(props) {
+  const [newForm, setNewForm] = useState(
+    props.exam
+      ? props.exam
+      : { id: Date.now().toString(), name: "", time: new Date() }
+  );
 
-  const [newForm, setNewForm] = useState({'name': '', 'time': new Date()});
-  
   const handleDateChange = (newTime) => {
-    setNewForm(prevState => ({
+    setNewForm((prevState) => ({
       ...prevState,
-      ['time']: newTime
+      ["time"]: newTime,
     }));
   };
 
   const handleNameChange = (event) => {
     const newName = event.target.value;
-    setNewForm(prevState => ({
+    setNewForm((prevState) => ({
       ...prevState,
-      ['name']: newName
+      ["name"]: newName,
     }));
   };
 
   const addExam = () => {
     // console.log(newForm);
-    props.setExams(prevState => ({
+    props.setExams((prevState) => ({
       ...prevState,
-      [newForm.name]: newForm
+      [newForm.id]: newForm,
     }));
     props.handleClose();
   };
 
   return (
     <div>
-      <Dialog
-        open={props.open}
-        onClose={props.handleClose}
-      >
+      <Dialog open={props.open} onClose={props.handleClose}>
         <DialogTitle>Enter New Exam Information</DialogTitle>
         <DialogContent>
           <div className="addEditModal">
             <TextField
               autoFocus
               id="name"
-              // value={newForm.name}
+              value={newForm.name}
               onChange={handleNameChange}
               label="Exam name"
               type="text"
               variant="standard"
-              />
+            />
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DateTimePicker
                 value={newForm.time}
                 onChange={handleDateChange}
                 renderInput={(params) => <TextField {...params} />}
-                />
+              />
             </LocalizationProvider>
           </div>
         </DialogContent>
         <DialogActions>
           <Button onClick={props.handleClose}>Cancel</Button>
-          <Button onClick={addExam}>Add</Button>
+          <Button onClick={addExam}>Submit</Button>
         </DialogActions>
       </Dialog>
       {/* <Modal
@@ -105,7 +104,6 @@ export default function AddEditEventModal(props) {
         <button onClick={props.handleTogglePopup}>close</button>
         <button onClick={addExam}>Add</button>
       </Modal> */}
-      
     </div>
   );
-};
+}
