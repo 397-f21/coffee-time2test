@@ -11,9 +11,16 @@ import CircleTimer from "./CircleTimer";
 export default function EventCard({ exam, setExams, opener }) {
   const [open, setOpen] = React.useState(false);
 
-  // const displayDate = exam.time.toDateString();
-  // const timeString = exam.time.toLocaleTimeString()
-  // const displayTime = "at " + timeString.slice(0, -6) + timeString.slice(-3);
+  const deleteExam = () => {
+    // console.log(newForm);
+    setExams((prevState) => {
+    const newExams = { ...prevState };
+    delete newExams[exam.id];
+    return newExams;
+    });
+
+    };
+
 
   return (
     <div>
@@ -31,7 +38,7 @@ export default function EventCard({ exam, setExams, opener }) {
           <Button
             variant="outlined"
             color="secondary"
-            // onClick={}
+            onClick={deleteExam}
           >
             Delete
           </Button>
